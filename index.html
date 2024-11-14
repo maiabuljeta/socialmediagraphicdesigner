@@ -395,121 +395,133 @@
 </div>
 
   <script>
-    const YOUR_EMAIL = "maiabuljeta@gmail.com";
-    
-    const gridItems = document.querySelectorAll('.grid-item');
-    const modal = document.querySelector('.modal');
-    const modalImg = document.querySelector('.modal-content img');
-    const closeButton = document.querySelector('.close-button');
-    const highlights = document.querySelectorAll('.highlight');
 
-    const highlightContent = {
-      'Portfolio': `
-        <div class="highlight-content">
-          <h2>Portfolio Highlights</h2>
-          <ul>
-            <li>Instagram Feed Design</li>
-            <li>Facebook Ad Campaigns</li>
-            <li>Story Templates</li>
-            <li>Brand Identity Design</li>
-            <li>Social Media Strategy</li>
-            <li>Content Calendar Creation</li>
-          </ul>
-        </div>
-      `,
-      'Services': `
-        <div class="highlight-content">
-          <h2>Services & Pricing</h2>
-          <ul>
-            <li>Single Post Design: $20</li>
-            <li>Weekly Content Package (8 posts): $350</li>
-            <li>Monthly Content Package (30 posts): $50</li>
-            <li>Brand Kit & Style Guide: $80</li>
-            <li>Story Templates (set of 90): $60</li>
-            <li>Custom Project: Contact for Quote</li>
-          </ul>
-        </div>
-      `,
-      'Reviews': `
-        <div class="highlight-content">
-          <h2>Client Reviews</h2>
-          <div class="review-item">
-            <div>⭐⭐⭐⭐⭐</div>
-            "Working with this designer transformed our social media presence. Professional, creative, and always on time!"
-            <br>- Sarah J., Fashion Brand
-          </div>
-          <div class="review-item">
-            <div>⭐⭐⭐⭐⭐</div>
-            "Incredible attention to detail and understanding of our brand. Highly recommend!"
-            <br>- Mike R., Tech Startup
-          </div>
-          <div class="review-item">
-            <div>⭐⭐⭐⭐⭐</div>
-            "The best investment we've made for our social media. Our engagement has doubled!"
-            <br>- Lisa M., Beauty Brand
-          </div>
-        </div>
-      `
-    };
+// Replace the existing JavaScript with this updated version
 
-    // Simple contact form HTML
-    const contactFormHTML = `
-      <div class="contact-form">
-        <h2>Let's Work Together</h2>
-        <p>maiabuljeta@gmail.com</p>
+const YOUR_EMAIL = "maiabuljeta@gmail.com";
+
+// Get all the elements you need
+const gridItems = document.querySelectorAll('.grid-item');
+const modal = document.querySelector('.modal');
+const modalImg = document.querySelector('.modal-content img');
+const closeButton = document.querySelector('.close-button');
+const highlights = document.querySelectorAll('.highlight');
+
+// Modal content for highlights
+const highlightContent = {
+  'Portfolio': `
+    <div class="highlight-content">
+      <h2>Portfolio Highlights</h2>
+      <ul>
+        <li>Instagram Feed Design</li>
+        <li>Facebook Ad Campaigns</li>
+        <li>Story Templates</li>
+        <li>Brand Identity Design</li>
+        <li>Social Media Strategy</li>
+        <li>Content Calendar Creation</li>
+      </ul>
+    </div>
+  `,
+  'Services': `
+    <div class="highlight-content">
+      <h2>Services & Pricing</h2>
+      <ul>
+        <li>Single Post Design: $20</li>
+        <li>Weekly Content Package (8 posts): $350</li>
+        <li>Monthly Content Package (30 posts): $50</li>
+        <li>Brand Kit & Style Guide: $80</li>
+        <li>Story Templates (set of 90): $60</li>
+        <li>Custom Project: Contact for Quote</li>
+      </ul>
+    </div>
+  `,
+  'Reviews': `
+    <div class="highlight-content">
+      <h2>Client Reviews</h2>
+      <div class="review-item">
+        <div>⭐⭐⭐⭐⭐</div>
+        "Working with this designer transformed our social media presence. Professional, creative, and always on time!"
+        <br>- Sarah J., Fashion Brand
       </div>
-    `;
+      <div class="review-item">
+        <div>⭐⭐⭐⭐⭐</div>
+        "Incredible attention to detail and understanding of our brand. Highly recommend!"
+        <br>- Mike R., Tech Startup
+      </div>
+      <div class="review-item">
+        <div>⭐⭐⭐⭐⭐</div>
+        "The best investment we've made for our social media. Our engagement has doubled!"
+        <br>- Lisa M., Beauty Brand
+      </div>
+    </div>
+  `
+};
 
-    // Handle highlight clicks
-    const modalBody = document.querySelector('.modal-body');
-
+// Handle highlight clicks
 highlights.forEach(highlight => {
   highlight.addEventListener('click', () => {
     const type = highlight.querySelector('.highlight-text').textContent;
     const content = highlightContent[type];
     
+    // Hide image in modal
     modalImg.style.display = 'none';
+    
+    // Display modal with content
     modal.style.display = 'flex';
-    modalBody.innerHTML = content; // Only update modal-body
+    modal.innerHTML = `
+      <span class="close-button">&times;</span>
+      ${content}
+    `;
+    
+    // Ensure the close button works after content is added
+    document.querySelector('.close-button').addEventListener('click', closeModal);
     
     setTimeout(() => modal.classList.add('show'), 10);
   });
 });
 
-
-    // Handle contact button
-   document.querySelector('.contact-button').addEventListener('click', () => {
+// Handle contact button click (Work with me)
+document.querySelector('.contact-button').addEventListener('click', () => {
   modalImg.style.display = 'none';
   modal.style.display = 'flex';
-  modalBody.innerHTML = contactFormHTML; // Only update modal-body
-
+  modal.innerHTML = `
+    <span class="close-button">&times;</span>
+    <div class="contact-form">
+      <h2>Let's Work Together</h2>
+      <a href="mailto:${YOUR_EMAIL}">Send me an email</a>
+    </div>
+  `;
+  
+  // Ensure the close button is functional after modal content changes
+  document.querySelector('.close-button').addEventListener('click', closeModal);
+  
   setTimeout(() => modal.classList.add('show'), 10);
 });
 
-    
-    // Handle grid item clicks
-    gridItems.forEach(item => {
-      item.addEventListener('click', () => {
-        modalImg.style.display = 'block';
-        const imgSrc = item.querySelector('img').src;
-        modalImg.src = imgSrc;
-        modal.style.display = 'flex';
-        setTimeout(() => modal.classList.add('show'), 10);
-      });
-    });
+// Handle grid item clicks (for image modal)
+gridItems.forEach(item => {
+  item.addEventListener('click', () => {
+    modalImg.style.display = 'block';
+    const imgSrc = item.querySelector('img').src;
+    modalImg.src = imgSrc;
+    modal.style.display = 'flex';
+    setTimeout(() => modal.classList.add('show'), 10);
+  });
+});
 
-    // Close modal function
-    function closeModal() {
-      modal.classList.remove('show');
-      setTimeout(() => {
-        modal.style.display = 'none';
-      }, 300);
-    }
+// Close modal function
+function closeModal() {
+  modal.classList.remove('show');
+  setTimeout(() => {
+    modal.style.display = 'none';
+  }, 300);
+}
 
-    // Close modal when clicking outside
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal();
-    });
+// Close modal when clicking outside
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) closeModal();
+});
+
   </script>
 </body>
 </html>
