@@ -394,21 +394,9 @@
   </div>
 </div>
 
-
-
-  
-
-const YOUR_EMAIL = "maiabuljeta@gmail.com";
-const subject = "Interested in Your Services";
-const body = "Hi, I would like to work with you!";
-
-// Encode the subject and body to ensure the URL is valid
-const encodedSubject = encodeURIComponent(subject);
-const encodedBody = encodeURIComponent(body);
-
-  
-
-  
+  <script>
+    const YOUR_EMAIL = "maiabuljeta@gmail.com";
+    
     const gridItems = document.querySelectorAll('.grid-item');
     const modal = document.querySelector('.modal');
     const modalImg = document.querySelector('.modal-content img');
@@ -465,11 +453,11 @@ const encodedBody = encodeURIComponent(body);
     };
 
     // Simple contact form HTML
-  const contactFormHTML = `
-  <div class="contact-form">
-    <h2>Let's Work Together</h2>
-    <a href="mailto:${YOUR_EMAIL}?subject=${encodedSubject}&body=${encodedBody}">Send me an email</a>
-  </div>
+    const contactFormHTML = `
+      <div class="contact-form">
+        <h2>Let's Work Together</h2>
+        <p>maiabuljeta@gmail.com</p>
+      </div>
     `;
 
     // Handle highlight clicks
