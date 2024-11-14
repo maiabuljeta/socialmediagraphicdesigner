@@ -425,7 +425,7 @@
 
   <script>
     // Replace this email with your actual email address
-    const YOUR_EMAIL = "your-email@example.com";
+    const YOUR_EMAIL = "maiabuljeta@gmail.com";
     
     const gridItems = document.querySelectorAll('.grid-item');
     const modal = document.querySelector('.modal');
@@ -555,7 +555,7 @@
       const emailBody = `Message from: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
       
       // Create mailto link
-      const mailtoLink = `mailto:$maiabuljeta@gmail.com?subject=New Portfolio Inquiry from ${formData.name}&body=${encodeURIComponent(emailBody)}`;
+      const mailtoLink = `mailto:${YOUR_EMAIL}?subject=New Portfolio Inquiry from ${formData.name}&body=${encodeURIComponent(emailBody)}`;
       window.location.href = mailtoLink;
       
       closeModal();
