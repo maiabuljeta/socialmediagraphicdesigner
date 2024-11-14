@@ -555,7 +555,7 @@
       const emailBody = `Message from: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
       
       // Create mailto link
-      const mailtoLink = `mailto:${maiabuljeta@gmail.com}?subject=New Portfolio Inquiry from ${formData.name}&body=${encodeURIComponent(emailBody)}`;
+      const mailtoLink = `mailto:$maiabuljeta@gmail.com?subject=New Portfolio Inquiry from ${formData.name}&body=${encodeURIComponent(emailBody)}`;
       window.location.href = mailtoLink;
       
       closeModal();
