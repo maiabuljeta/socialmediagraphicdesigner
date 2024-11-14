@@ -2,13 +2,6 @@
 <html>
 <head>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      cursor: pointer;
-    }
-
     body {
       margin: 0;
       padding: 20px;
@@ -18,7 +11,6 @@
       align-items: center;
       background: #fafafa;
       font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto;
-      color: #262626;
     }
 
     .iphone-container {
@@ -46,16 +38,14 @@
     }
 
     .profile-header {
-      padding: 24px 16px;
-      border-bottom: 1px solid rgba(0,0,0,0.08);
-      background: white;
-      margin-top: 30px;
+      padding: 16px;
+      border-bottom: 1px solid #dbdbdb;
     }
 
     .profile-info {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 20px;
       margin-bottom: 15px;
     }
 
@@ -65,7 +55,6 @@
       border-radius: 50%;
       background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
       padding: 3px;
-      flex-shrink: 0;
     }
 
     .profile-pic img {
@@ -78,47 +67,38 @@
 
     .profile-stats {
       display: flex;
-      gap: 32px;
+      gap: 30px;
     }
 
     .stat {
       text-align: center;
-      transition: transform 0.2s ease;
-    }
-
-    .stat:hover {
-      transform: scale(1.05);
     }
 
     .stat-number {
-      font-weight: 700;
+      font-weight: 600;
       font-size: 16px;
-      color: #262626;
     }
 
     .stat-label {
-      font-size: 13px;
+      font-size: 14px;
       color: #8e8e8e;
-      margin-top: 2px;
     }
 
     .bio-section {
-      padding: 20px 16px;
-      background: white;
+      padding: 0 16px;
+      margin-bottom: 20px;
     }
 
     .bio-name {
-      font-weight: 700;
+      font-weight: 600;
       font-size: 16px;
-      margin-bottom: 8px;
-      color: #262626;
+      margin-bottom: 4px;
     }
 
     .bio-text {
       font-size: 14px;
-      line-height: 1.6;
-      margin-bottom: 16px;
-      color: #262626;
+      line-height: 1.4;
+      margin-bottom: 12px;
     }
 
     .contact-button {
@@ -126,41 +106,32 @@
       color: white;
       border: none;
       border-radius: 8px;
-      padding: 12px 16px;
+      padding: 7px 16px;
       font-weight: 600;
       font-size: 14px;
       width: 100%;
       cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: background 0.2s ease;
     }
 
     .contact-button:hover {
       background: #0081d6;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
     .highlights {
       display: flex;
-      gap: 24px;
-      padding: 20px 16px;
+      gap: 15px;
+      padding: 16px;
       overflow-x: auto;
-      border-bottom: 1px solid rgba(0,0,0,0.08);
-      background: white;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
-
-    .highlights::-webkit-scrollbar {
-      display: none;
+      border-bottom: 1px solid #dbdbdb;
     }
 
     .highlight {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 8px;
+      gap: 4px;
+      cursor: pointer;
       transition: transform 0.2s ease;
     }
 
@@ -172,24 +143,16 @@
       width: 65px;
       height: 65px;
       border-radius: 50%;
-      background: white;
-      border: 2px solid #dbdbdb;
+      border: 1px solid #dbdbdb;
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
-      transition: all 0.2s ease;
-    }
-
-    .highlight:hover .highlight-circle {
-      border-color: #8e8e8e;
-      transform: scale(1.02);
+      margin-bottom: 4px;
     }
 
     .highlight-text {
       font-size: 12px;
       color: #262626;
-      font-weight: 500;
     }
 
     .grid-container {
@@ -198,18 +161,8 @@
       gap: 3px;
       padding: 3px;
       background: white;
-      height: calc(100% - 380px);
+      height: calc(100% - 300px);
       overflow-y: auto;
-      scrollbar-width: thin;
-    }
-
-    .grid-container::-webkit-scrollbar {
-      width: 4px;
-    }
-
-    .grid-container::-webkit-scrollbar-thumb {
-      background: #dbdbdb;
-      border-radius: 4px;
     }
 
     .grid-item {
@@ -218,7 +171,6 @@
       position: relative;
       cursor: pointer;
       animation: fadeIn 0.3s ease forwards;
-      background: #fafafa;
     }
 
     @keyframes fadeIn {
@@ -250,7 +202,6 @@
       align-items: center;
       opacity: 0;
       transition: opacity 0.3s ease;
-      backdrop-filter: blur(5px);
     }
 
     .modal.show {
@@ -262,7 +213,6 @@
       max-height: 90%;
       transform: scale(0.9);
       transition: transform 0.3s ease;
-      position: relative;
     }
 
     .modal.show .modal-content {
@@ -273,7 +223,6 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
-      border-radius: 8px;
     }
 
     .close-button {
@@ -284,37 +233,21 @@
       font-size: 30px;
       cursor: pointer;
       z-index: 1001;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0,0,0,0.5);
-      border-radius: 50%;
-      transition: all 0.2s ease;
-    }
-
-    .close-button:hover {
-      background: rgba(0,0,0,0.7);
-      transform: scale(1.1);
     }
 
     .contact-form {
       background: white;
-      padding: 32px;
-      border-radius: 16px;
+      padding: 24px;
+      border-radius: 12px;
       width: 90%;
       max-width: 400px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      position: relative;
     }
 
     .contact-form h2 {
-      margin: 0 0 24px 0;
-      font-size: 24px;
+      margin: 0 0 16px 0;
+      font-size: 20px;
       color: #262626;
       text-align: center;
-      font-weight: 700;
     }
 
     .contact-form a {
@@ -323,90 +256,45 @@
       color: white;
       text-decoration: none;
       text-align: center;
-      padding: 14px;
+      padding: 12px;
       border-radius: 8px;
       font-weight: 600;
       margin-top: 16px;
-      transition: all 0.2s ease;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .contact-form a:hover {
-      background: #0081d6;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
     .highlight-content {
       background: white;
-      padding: 32px;
-      border-radius: 16px;
+      padding: 24px;
+      border-radius: 12px;
       width: 90%;
       max-width: 400px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      position: relative;
     }
 
     .highlight-content h2 {
-      margin: 0 0 24px 0;
-      font-size: 24px;
+      margin: 0 0 16px 0;
+      font-size: 20px;
       color: #262626;
-      font-weight: 700;
     }
 
     .highlight-content ul {
       margin: 0;
-      padding-left: 24px;
-      list-style-type: none;
+      padding-left: 20px;
     }
 
     .highlight-content li {
-      margin-bottom: 12px;
-      position: relative;
-      padding-left: 8px;
-    }
-
-    .highlight-content li::before {
-      content: "•";
-      color: #0095f6;
-      position: absolute;
-      left: -16px;
-      font-weight: bold;
+      margin-bottom: 8px;
     }
 
     .review-item {
-      margin-bottom: 24px;
-      padding-bottom: 24px;
-      border-bottom: 1px solid rgba(0,0,0,0.08);
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #dbdbdb;
     }
 
     .review-item:last-child {
       margin-bottom: 0;
       padding-bottom: 0;
       border-bottom: none;
-    }
-
-    .review-stars {
-      color: #ffd700;
-      margin-bottom: 8px;
-      font-size: 18px;
-    }
-
-    .review-text {
-      font-style: italic;
-      margin-bottom: 8px;
-      line-height: 1.5;
-    }
-
-    .review-author {
-      color: #8e8e8e;
-      font-size: 14px;
-    }
-
-    .modal-inner-content {
-      position: relative;
-      width: 100%;
-      height: 100%;
     }
   </style>
 </head>
@@ -443,23 +331,23 @@
 ✨ Elevate Your Brand
 🚀 5+ Years Experience
 📊 Proven Results</div>
-      <button class="contact-button" id="contactBtn">Work With Me</button>
+      <button class="contact-button">Work With Me</button>
     </div>
 
     <div class="highlights">
-      <div class="highlight" data-type="Portfolio">
+      <div class="highlight">
         <div class="highlight-circle">
           <img src="/api/placeholder/65/65" alt="Portfolio">
         </div>
         <span class="highlight-text">Portfolio</span>
       </div>
-      <div class="highlight" data-type="Services">
+      <div class="highlight">
         <div class="highlight-circle">
           <img src="/api/placeholder/65/65" alt="Services">
         </div>
         <span class="highlight-text">Services</span>
       </div>
-      <div class="highlight" data-type="Reviews">
+      <div class="highlight">
         <div class="highlight-circle">
           <img src="/api/placeholder/65/65" alt="Reviews">
         </div>
@@ -467,7 +355,7 @@
       </div>
     </div>
 
-    <div class="grid-container" id="imageGrid">
+    <div class="grid-container">
       <div class="grid-item">
         <img src="/api/placeholder/400/400" alt="Social media design 1">
       </div>
@@ -498,26 +386,22 @@
     </div>
   </div>
 
-  [Previous code remains exactly the same until the modal div...]
-
-  <div class="modal" id="modal">
-    <div class="modal-content" id="modalContent">
-      <div class="modal-inner-content">
-        <img src="" alt="Enlarged view" id="modalImage">
-        <span class="close-button" id="closeButton">&times;</span>
-      </div>
-    </div>
+ <div class="modal">
+  <span class="close-button">&times;</span>
+  <div class="modal-content">
+    <img src="" alt="Enlarged view">
+    <div class="modal-body"></div>
   </div>
+</div>
 
   <script>
+    const YOUR_EMAIL = "maiabuljeta@gmail.com";
+    
     const gridItems = document.querySelectorAll('.grid-item');
-    const modal = document.getElementById('modal');
-    const modalImage = document.getElementById('modalImage');
-    const modalContent = document.getElementById('modalContent');
-    const closeButton = document.getElementById('closeButton');
+    const modal = document.querySelector('.modal');
+    const modalImg = document.querySelector('.modal-content img');
+    const closeButton = document.querySelector('.close-button');
     const highlights = document.querySelectorAll('.highlight');
-    const contactBtn = document.getElementById('contactBtn');
-    const imageGrid = document.getElementById('imageGrid');
 
     const highlightContent = {
       'Portfolio': `
@@ -531,7 +415,6 @@
             <li>Social Media Strategy</li>
             <li>Content Calendar Creation</li>
           </ul>
-          <span class="close-button">&times;</span>
         </div>
       `,
       'Services': `
@@ -545,113 +428,87 @@
             <li>Story Templates (set of 90): $60</li>
             <li>Custom Project: Contact for Quote</li>
           </ul>
-          <span class="close-button">&times;</span>
         </div>
       `,
       'Reviews': `
         <div class="highlight-content">
           <h2>Client Reviews</h2>
           <div class="review-item">
-            <div class="review-stars">⭐⭐⭐⭐⭐</div>
-            <div class="review-text">"Working with this designer transformed our social media presence. Professional, creative, and always on time!"</div>
-            <div class="review-author">- Sarah J., Fashion Brand</div>
+            <div>⭐⭐⭐⭐⭐</div>
+            "Working with this designer transformed our social media presence. Professional, creative, and always on time!"
+            <br>- Sarah J., Fashion Brand
           </div>
           <div class="review-item">
-            <div class="review-stars">⭐⭐⭐⭐⭐</div>
-            <div class="review-text">"Incredible attention to detail and understanding of our brand. Highly recommend!"</div>
-            <div class="review-author">- Mike R., Tech Startup</div>
+            <div>⭐⭐⭐⭐⭐</div>
+            "Incredible attention to detail and understanding of our brand. Highly recommend!"
+            <br>- Mike R., Tech Startup
           </div>
           <div class="review-item">
-            <div class="review-stars">⭐⭐⭐⭐⭐</div>
-            <div class="review-text">"The best investment we've made for our social media. Our engagement has doubled!"</div>
-            <div class="review-author">- Lisa M., Beauty Brand</div>
+            <div>⭐⭐⭐⭐⭐</div>
+            "The best investment we've made for our social media. Our engagement has doubled!"
+            <br>- Lisa M., Beauty Brand
           </div>
-          <span class="close-button">&times;</span>
         </div>
       `
     };
 
+    // Simple contact form HTML
     const contactFormHTML = `
       <div class="contact-form">
         <h2>Let's Work Together</h2>
-        <a href="mailto:maiabuljeta@gmail.com">Send me an email</a>
-        <span class="close-button">&times;</span>
+        <a href="mailto:${YOUR_EMAIL}">Send me an email</a>
       </div>
     `;
 
-    // Function to show modal
-    function showModal(content) {
-      modal.style.display = 'flex';
-      modalContent.innerHTML = content;
-      setTimeout(() => modal.classList.add('show'), 10);
-      
-      // Add event listener to new close button
-      const newCloseButton = modalContent.querySelector('.close-button');
-      if (newCloseButton) {
-        newCloseButton.addEventListener('click', closeModal);
-      }
-    }
+    // Handle highlight clicks
+    const modalBody = document.querySelector('.modal-body');
 
-    // Function to close modal
+highlights.forEach(highlight => {
+  highlight.addEventListener('click', () => {
+    const type = highlight.querySelector('.highlight-text').textContent;
+    const content = highlightContent[type];
+    
+    modalImg.style.display = 'none';
+    modal.style.display = 'flex';
+    modalBody.innerHTML = content; // Only update modal-body
+    
+    setTimeout(() => modal.classList.add('show'), 10);
+  });
+});
+
+
+    // Handle contact button
+   document.querySelector('.contact-button').addEventListener('click', () => {
+  modalImg.style.display = 'none';
+  modal.style.display = 'flex';
+  modalBody.innerHTML = contactFormHTML; // Only update modal-body
+
+  setTimeout(() => modal.classList.add('show'), 10);
+});
+
+    
+    // Handle grid item clicks
+    gridItems.forEach(item => {
+      item.addEventListener('click', () => {
+        modalImg.style.display = 'block';
+        const imgSrc = item.querySelector('img').src;
+        modalImg.src = imgSrc;
+        modal.style.display = 'flex';
+        setTimeout(() => modal.classList.add('show'), 10);
+      });
+    });
+
+    // Close modal function
     function closeModal() {
       modal.classList.remove('show');
       setTimeout(() => {
         modal.style.display = 'none';
-        modalContent.innerHTML = `
-          <div class="modal-inner-content">
-            <img src="" alt="Enlarged view" id="modalImage">
-            <span class="close-button" id="closeButton">&times;</span>
-          </div>
-        `;
       }, 300);
     }
 
-    // Handle highlight clicks
-    highlights.forEach(highlight => {
-      highlight.addEventListener('click', () => {
-        const type = highlight.getAttribute('data-type');
-        const content = highlightContent[type];
-        showModal(content);
-      });
-    });
-
-    // Handle contact button click
-    contactBtn.addEventListener('click', () => {
-      showModal(contactFormHTML);
-    });
-
-    // Handle grid item clicks
-    gridItems.forEach(item => {
-      item.addEventListener('click', () => {
-        const imgSrc = item.querySelector('img').src;
-        showModal(`
-          <div class="modal-inner-content">
-            <img src="${imgSrc}" alt="Enlarged view">
-            <span class="close-button">&times;</span>
-          </div>
-        `);
-      });
-    });
-
     // Close modal when clicking outside
     modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        closeModal();
-      }
-    });
-
-    // Close modal with escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.style.display === 'flex') {
-        closeModal();
-      }
-    });
-
-    // Prevent scroll on modal open
-    modal.addEventListener('wheel', (e) => {
-      if (e.target === modal) {
-        e.preventDefault();
-      }
+      if (e.target === modal) closeModal();
     });
   </script>
 </body>
