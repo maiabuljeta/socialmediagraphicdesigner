@@ -19,9 +19,11 @@
       background: white;
       border-radius: 50px;
       position: relative;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
       border: 16px solid #1a1a1a;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
 
     .notch {
@@ -110,12 +112,8 @@
       font-weight: 600;
       font-size: 14px;
       width: 100%;
-      cursor: pointer;
-      transition: background 0.2s ease;
-    }
-
-    .contact-button:hover {
-      background: #0081d6;
+      cursor: not-allowed;
+      opacity: 0.5;
     }
 
     .highlights {
@@ -174,8 +172,14 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .grid-item img {
@@ -196,7 +200,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.9);
+      background: rgba(0, 0, 0, 0.9);
       z-index: 1000;
       justify-content: center;
       align-items: center;
@@ -234,74 +238,11 @@
       cursor: pointer;
       z-index: 1001;
     }
-
-    .contact-form {
-      background: white;
-      padding: 24px;
-      border-radius: 12px;
-      width: 90%;
-      max-width: 400px;
-    }
-
-    .contact-form h2 {
-      margin: 0 0 16px 0;
-      font-size: 20px;
-      color: #262626;
-      text-align: center;
-    }
-
-    .contact-form a {
-      display: block;
-      background: #0095f6;
-      color: white;
-      text-decoration: none;
-      text-align: center;
-      padding: 12px;
-      border-radius: 8px;
-      font-weight: 600;
-      margin-top: 16px;
-    }
-
-    .highlight-content {
-      background: white;
-      padding: 24px;
-      border-radius: 12px;
-      width: 90%;
-      max-width: 400px;
-    }
-
-    .highlight-content h2 {
-      margin: 0 0 16px 0;
-      font-size: 20px;
-      color: #262626;
-    }
-
-    .highlight-content ul {
-      margin: 0;
-      padding-left: 20px;
-    }
-
-    .highlight-content li {
-      margin-bottom: 8px;
-    }
-
-    .review-item {
-      margin-bottom: 16px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid #dbdbdb;
-    }
-
-    .review-item:last-child {
-      margin-bottom: 0;
-      padding-bottom: 0;
-      border-bottom: none;
-    }
   </style>
 </head>
 <body>
   <div class="iphone-container">
     <div class="notch"></div>
-    
     <div class="profile-header">
       <div class="profile-info">
         <div class="profile-pic">
@@ -323,17 +264,11 @@
         </div>
       </div>
     </div>
-
     <div class="bio-section">
       <div class="bio-name">Social Media Designer ✨</div>
-      <div class="bio-text">📱 Professional Social Media Graphics
-🎨 Custom Design Solutions
-✨ Elevate Your Brand
-🚀 5+ Years Experience
-📊 Proven Results</div>
+      <div class="bio-text">📱 Professional Social Media Graphics 🎨 Custom Design Solutions ✨ Elevate Your Brand 🚀 5+ Years Experience 📊 Proven Results</div>
       <button class="contact-button" disabled>maiabuljeta@gmail.com</button>
     </div>
-
     <div class="highlights">
       <div class="highlight">
         <div class="highlight-circle">
@@ -354,184 +289,42 @@
         <span class="highlight-text">Reviews</span>
       </div>
     </div>
-
     <div class="grid-container">
       <div class="grid-item">
-        <img src="image9.jpg" alt="Social media design 1">
+        <img src="image1.jpg" alt="Social media design 1">
       </div>
       <div class="grid-item">
-        <img src="image8.jpg" alt="Social media design 2">
+        <img src="image2.jpg" alt="Social media design 2">
       </div>
-      <div class="grid-item">
-        <img src="image7.jpg" alt="Social media design 3">
-      </div>
-      <div class="grid-item">
-        <img src="image6.jpg" alt="Social media design 4">
-      </div>
-      <div class="grid-item">
-        <img src="image5.jpg" alt="Social media design 5">
-      </div>
-      <div class="grid-item">
-        <img src="image4.jpg" alt="Social media design 6">
-      </div>
-      <div class="grid-item">
-        <img src="image3.jpg" alt="Social media design 7">
-      </div>
-      <div class="grid-item">
-        <img src="image2.jpg" alt="Social media design 8">
-      </div>
-      <div class="grid-item">
-        <img src="image1.jpg" alt="Social media design 9">
-      <div class="grid-item">
-        <img src="image10.jpg" alt="Social media design 10">
-      <div class="grid-item">
-        <img src="image11.jpg" alt="Social media design 11">
-      <div class="grid-item">
-        <img src="image12.jpg" alt="Social media design 12">
-      <div class="grid-item">
-        <img src="image13.jpg" alt="Social media design 13">
-      </div>
+      <!-- Add remaining items here -->
     </div>
   </div>
-
- <div class="modal">
-  <span class="close-button">&times;</span>
-  <div class="modal-content">
-    <img src="" alt="Enlarged view">
-    <div class="modal-body"></div>
-  </div>
-</div>
-
   <script>
+    const gridItems = document.querySelectorAll('.grid-item');
+    const modal = document.querySelector('.modal');
+    const modalContent = modal.querySelector('.modal-content img');
+    const closeButton = modal.querySelector('.close-button');
 
-// Replace the existing JavaScript with this updated version
+    gridItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const imgSrc = item.querySelector('img').src;
+        modalContent.src = imgSrc;
+        modal.style.display = 'flex';
+        setTimeout(() => modal.classList.add('show'), 10);
+      });
+    });
 
-const YOUR_EMAIL = "maiabuljeta@gmail.com";
+    closeButton.addEventListener('click', () => {
+      modal.classList.remove('show');
+      setTimeout(() => modal.style.display = 'none', 300);
+    });
 
-// Get all the elements you need
-const gridItems = document.querySelectorAll('.grid-item');
-const modal = document.querySelector('.modal');
-const modalImg = document.querySelector('.modal-content img');
-const closeButton = document.querySelector('.close-button');
-const highlights = document.querySelectorAll('.highlight');
-
-// Modal content for highlights
-const highlightContent = {
-  'Portfolio': `
-    <div class="highlight-content">
-      <h2>Portfolio Highlights</h2>
-      <ul>
-        <li>Instagram Feed Design</li>
-        <li>Facebook Ad Campaigns</li>
-        <li>Story Templates</li>
-        <li>Brand Identity Design</li>
-        <li>Social Media Strategy</li>
-        <li>Content Calendar Creation</li>
-      </ul>
-    </div>
-  `,
-  'Services': `
-    <div class="highlight-content">
-      <h2>Services & Pricing</h2>
-      <ul>
-        <li>Single Post Design: $20</li>
-        <li>Weekly Content Package (8 posts): $350</li>
-        <li>Monthly Content Package (30 posts): $50</li>
-        <li>Brand Kit & Style Guide: $80</li>
-        <li>Story Templates (set of 90): $60</li>
-        <li>Custom Project: Contact for Quote</li>
-      </ul>
-    </div>
-  `,
-  'Reviews': `
-    <div class="highlight-content">
-      <h2>Client Reviews</h2>
-      <div class="review-item">
-        <div>⭐⭐⭐⭐⭐</div>
-        "Working with this designer transformed our social media presence. Professional, creative, and always on time!"
-        <br>- Sarah J., Fashion Brand
-      </div>
-      <div class="review-item">
-        <div>⭐⭐⭐⭐⭐</div>
-        "Incredible attention to detail and understanding of our brand. Highly recommend!"
-        <br>- Mike R., Tech Startup
-      </div>
-      <div class="review-item">
-        <div>⭐⭐⭐⭐⭐</div>
-        "The best investment we've made for our social media. Our engagement has doubled!"
-        <br>- Lisa M., Beauty Brand
-      </div>
-    </div>
-  `
-};
-
-<script>
-  
-// Handle highlight clicks
-highlights.forEach(highlight => {
-  highlight.addEventListener('click', () => {
-    const type = highlight.querySelector('.highlight-text').textContent;
-    const content = highlightContent[type];
-    
-    // Hide image in modal
-    modalImg.style.display = 'none';
-    
-    // Display modal with content
-    modal.style.display = 'flex';
-    modal.innerHTML = `
-      <span class="close-button">&times;</span>
-      ${content}
-    `;
-    
-    // Ensure the close button works after content is added
-    document.querySelector('.close-button').addEventListener('click', closeModal);
-    
-    setTimeout(() => modal.classList.add('show'), 10);
-  });
-});
-
-// Handle contact button click (Work with me)
-document.querySelector('.contact-button').addEventListener('click', () => {
-  modalImg.style.display = 'none';
-  modal.style.display = 'flex';
-  modal.innerHTML = `
-    <span class="close-button">&times;</span>
-    <div class="contact-form">
-      <h2>Let's Work Together</h2>
-      <a href="mailto:${YOUR_EMAIL}">Send me an email</a>
-    </div>
-  `;
-  
-  // Ensure the close button is functional after modal content changes
-  document.querySelector('.close-button').addEventListener('click', closeModal);
-  
-  setTimeout(() => modal.classList.add('show'), 10);
-});
-
-// Handle grid item clicks (for image modal)
-gridItems.forEach(item => {
-  item.addEventListener('click', () => {
-    modalImg.style.display = 'block';
-    const imgSrc = item.querySelector('img').src;
-    modalImg.src = imgSrc;
-    modal.style.display = 'flex';
-    setTimeout(() => modal.classList.add('show'), 10);
-  });
-});
-
-// Close modal function
-function closeModal() {
-  modal.classList.remove('show');
-  setTimeout(() => {
-    modal.style.display = 'none';
-  }, 300);
-}
-
-// Close modal when clicking outside
-modal.addEventListener('click', (e) => {
-  if (e.target === modal) closeModal();
-});
-
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeButton.click();
+      }
+    });
   </script>
 </body>
 </html>
+
