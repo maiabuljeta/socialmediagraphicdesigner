@@ -434,71 +434,35 @@ const highlightContent = {
   `
 };
 
-// Handle highlight clicks
-highlights.forEach(highlight => {
-  highlight.addEventListener('click', () => {
-    const type = highlight.querySelector('.highlight-text').textContent;
-    const content = highlightContent[type];
-    
-    // Hide image in modal
-    modalImg.style.display = 'none';
-    
-    // Display modal with content
-    modal.style.display = 'flex';
-    modal.innerHTML = `
-      <span class="close-button">&times;</span>
-      ${content}
-    `;
-    
-    // Ensure the close button works after content is added
-    document.querySelector('.close-button').addEventListener('click', closeModal);
-    
-    setTimeout(() => modal.classList.add('show'), 10);
-  });
-});
+  <!-- Your HTML content -->
 
-// Handle contact button click (Work with me)
-document.querySelector('.contact-button').addEventListener('click', () => {
-  modalImg.style.display = 'none';
-  modal.style.display = 'flex';
-  modal.innerHTML = `
-    <span class="close-button">&times;</span>
-    <div class="contact-form">
-      <h2>Let's Work Together</h2>
-      <a href="mailto:${YOUR_EMAIL}">Send me an email</a>
-    </div>
-  `;
-  
-  // Ensure the close button is functional after modal content changes
-  document.querySelector('.close-button').addEventListener('click', closeModal);
-  
-  setTimeout(() => modal.classList.add('show'), 10);
-});
+  <script>
+    // JavaScript for modal functionality
+    const gridItems = document.querySelectorAll('.grid-item');
+    const modal = document.querySelector('.modal');
+    const modalContent = modal.querySelector('.modal-content img');
+    const closeButton = modal.querySelector('.close-button');
 
-// Handle grid item clicks (for image modal)
-gridItems.forEach(item => {
-  item.addEventListener('click', () => {
-    modalImg.style.display = 'block';
-    const imgSrc = item.querySelector('img').src;
-    modalImg.src = imgSrc;
-    modal.style.display = 'flex';
-    setTimeout(() => modal.classList.add('show'), 10);
-  });
-});
+    gridItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const imgSrc = item.querySelector('img').src;
+        modalContent.src = imgSrc;
+        modal.style.display = 'flex';
+        setTimeout(() => modal.classList.add('show'), 10);
+      });
+    });
 
-// Close modal function
-function closeModal() {
-  modal.classList.remove('show');
-  setTimeout(() => {
-    modal.style.display = 'none';
-  }, 300);
-}
+    closeButton.addEventListener('click', () => {
+      modal.classList.remove('show');
+      setTimeout(() => modal.style.display = 'none', 300);
+    });
 
-// Close modal when clicking outside
-modal.addEventListener('click', (e) => {
-  if (e.target === modal) closeModal();
-});
-
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('show');
+        setTimeout(() => modal.style.display = 'none', 300);
+      }
+    });
   </script>
 </body>
 </html>
