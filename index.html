@@ -396,14 +396,11 @@
 }
 
 
-    .highlight-circle {
-  width: 200px; /* Adjust size to fit your layout */
-  height: 200px; /* Ensure the circle has equal width and height */
-  border-radius: 50%; /* Make it circular */
-  overflow: hidden; /* Hide anything that overflows the circle */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.highlight-circle img {
+  width: 100%; /* Ensure the image fills the circle */
+  height: 100%; /* Ensure the image fills the circle */
+  object-fit: cover; /* Ensures the image covers the circle without distortion */
+  image-rendering: smooth; /* Prevents pixelation */
 }
 
    
