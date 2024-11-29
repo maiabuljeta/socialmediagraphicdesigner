@@ -14,12 +14,6 @@
       color: #262626;
     }
 
-    .image-class { /* Use the actual class of your images */
-    width: 100%; /* Or specify an exact width like 400px */
-    height: auto;
-    image-rendering: -webkit-optimize-contrast; /* This improves image clarity on modern browsers */
-}
-
 
     .iphone-container {
       width: 375px;
@@ -400,6 +394,29 @@
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
+
+    .highlight-circle {
+  width: 200px; /* Adjust size to fit your layout */
+  height: 200px; /* Ensure the circle has equal width and height */
+  border-radius: 50%; /* Make it circular */
+  overflow: hidden; /* Hide anything that overflows the circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.highlight-circle img {
+  width: 100%; /* Ensure the image fills the circle */
+  height: 100%; /* Ensure the image fills the circle */
+  object-fit: cover; /* Ensures the image covers the circle without distortion */
+  image-rendering: smooth; /* Prevents pixelation */
+}
+
+.highlight-image {
+  max-width: 100%; /* Prevent image from being stretched beyond its natural size */
+  height: auto; /* Keep aspect ratio intact */
+}
+
 
    
   </style>
