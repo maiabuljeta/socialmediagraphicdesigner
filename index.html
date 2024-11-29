@@ -213,12 +213,13 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+
     .grid-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Switch from cover to contain */
+  transition: transform 0.3s ease;
+}
 
     .grid-item:hover img {
       transform: scale(1.05);
