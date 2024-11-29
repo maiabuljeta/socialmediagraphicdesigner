@@ -396,11 +396,15 @@
 }
 
 
-.highlight-image {
-  max-width: 100%; /* Prevent image from being stretched beyond its natural size */
-  height: auto; /* Keep aspect ratio intact */
+    .highlight-circle {
+  width: 200px; /* Adjust size to fit your layout */
+  height: 200px; /* Ensure the circle has equal width and height */
+  border-radius: 50%; /* Make it circular */
+  overflow: hidden; /* Hide anything that overflows the circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
 
    
   </style>
